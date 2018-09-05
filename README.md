@@ -1,10 +1,12 @@
-# Node + Express + Vue + Bootstrap Boiler Plate 
-Super simple boiler plate for creating single page vue applications. 
+# Simple Quote Tool 
+Simple quote tool using vue.js. 
 
-# Included Modules: 
-- Vue 
-- Axios 
-- Bootstrap 4.0 
+#To Do 
+- Add field for discount on quote. 
+- Add option to export to PDF. 
+- Update styling of form / quote detail items. 
+- Save quote in local storage so you can go back to other quotes. 
+	- Possibly connect to Mongo DB. 
 
 # Usage
 - The easiest way to start is to clone the repository. 

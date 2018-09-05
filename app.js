@@ -1,5 +1,5 @@
 "use strict";
-var projectName = 'BoilerPlate'; 
+var projectName = 'Simple Quote Tool'; 
 var projectAuthor = 'Danny Mecca'; 
 
 

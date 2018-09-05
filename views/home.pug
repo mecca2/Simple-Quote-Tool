@@ -1,7 +1,21 @@
 extends layout
 
 block content
-	h2.col-12 Vue Markup Goes Here 
 	div.col-12
-		ul(v-for="value in results")
-			li {{value.title}}
+		.form-group 
+			label Hourly Rate? 
+			input.form-control(type="number", v-model="hourly_rate")
+		.form-group 
+			label Name? 
+			input.form-control(type="text", v-model="single_item.name")
+			label Low Hours 
+			input.form-control(type="number", v-model="single_item.low_hours")
+			label High Hours 
+			input.form-control(type="number", v-model="single_item.high_hours")
+			btn.btn.btn-primary(v-on:click="addItem()") Submit 
+		div(v-for="item in results")
+			div Name: {{item.name}} Low Hours : {{item.low_hours}} High Hours : {{item.high_hours}}
+		div
+			h3 Results 
+			div Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }}
+			div Cost: {{calculateCost}}
