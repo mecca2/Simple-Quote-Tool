@@ -1,7 +1,7 @@
 # Simple Quote Tool 
 Simple quote tool using vue.js. 
 
-#To Do 
+# To Do 
 - Add field for discount on quote. 
 - Add option to export to PDF. 
 - Update styling of form / quote detail items. 
@@ -12,7 +12,7 @@ Simple quote tool using vue.js.
 - The easiest way to start is to clone the repository. 
 ```bash
 # Get the latest snapshot
-git clone https://github.com/MeccaProduction/simple-node-boilerplate.git myproject
+git clone https://github.com/mecca2/Simple-Quote-Tool.git myproject
 
 # Change directory
 cd myproject
