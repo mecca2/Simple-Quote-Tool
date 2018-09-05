@@ -2,20 +2,25 @@ extends layout
 
 block content
 	div.col-12
+		div.alert.alert-danger(v-if="error") {{error_message}} 
 		.form-group 
 			label Hourly Rate? 
 			input.form-control(type="number", v-model="hourly_rate")
 		.form-group 
-			label Name? 
+			label Name 
 			input.form-control(type="text", v-model="single_item.name")
-			label Low Hours 
-			input.form-control(type="number", v-model="single_item.low_hours")
-			label High Hours 
-			input.form-control(type="number", v-model="single_item.high_hours")
-			btn.btn.btn-primary(v-on:click="addItem()") Submit 
+			div.col-md-6.mb-3
+				label Low Hours 
+				input.form-control(type="number", v-model="single_item.low_hours" required)
+			div.col-md-6.mb-3
+				label High Hours 
+				input.form-control(type="number", v-model="single_item.high_hours" required)
+		btn.btn.btn-primary(v-on:click="addItem()") Submit 
+		
 		div(v-for="item in results")
-			div Name: {{item.name}} Low Hours : {{item.low_hours}} High Hours : {{item.high_hours}}
-		div
+			div Name: {{item.name}} 
+			div Low Hours : {{item.low_hours}} High Hours : {{item.high_hours}}
+		div(v-if="results.length > 0")
 			h3 Results 
 			div Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }}
-			div Cost: {{calculateCost}}
+			div Cost: ${{calculateCost}}

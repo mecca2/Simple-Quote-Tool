@@ -11,7 +11,9 @@ const vm = new Vue({
       high_hours: ''
     }, 
     total_low_hours: 0, 
-    total_high_hours: 0 
+    total_high_hours: 0, 
+    error: false,
+    error_message:''
   },
   mounted() {
    this.item = Object.assign({}, this.single_item); 
@@ -44,9 +46,21 @@ const vm = new Vue({
   methods : {
     addItem : function(){
      // console.log(this.single_item); 
+     this.error = false; 
+     var missing_fields = []; 
+     for(var key in this.single_item){
+      if(this.single_item[key] == ''){
+        this.error = true; 
+        missing_fields.push(key); 
+      }
+     }
+     if(this.error){
+      this.error_message = 'The following fields are required: ' + missing_fields.toString(); 
+     }else{
       this.results.push(this.single_item);
-     // console.log(this.results); 
       this.single_item = Object.assign({}, this.item)
+     }
+      
     }
   }
 });
