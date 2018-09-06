@@ -7,7 +7,8 @@ const vm = new Vue({
       name: '',
       low_hours: '',
       high_hours: '', 
-      active: false
+      active: false, 
+      category: 'Development'
     },
     total_low_hours: 0,
     total_high_hours: 0,
@@ -15,6 +16,12 @@ const vm = new Vue({
     error_message: '',
     non_required_fields : [
       'active'
+    ], 
+    categories: [
+      'Development', 
+      'Design', 
+      'Consultation', 
+      'Project Management'
     ]
   },
   mounted() {

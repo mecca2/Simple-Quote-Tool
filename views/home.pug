@@ -7,26 +7,32 @@ block content
 			label Hourly Rate? 
 			input.form-control(type="number", v-model="hourly_rate")
 		.form-group 
-			label Name 
+			label Category:
+			select.form-control(type="text", v-model="single_item.category")
+				option(v-for="category in categories") {{category}}
+		.form-group 
+			label Description:
 			input.form-control(type="text", v-model="single_item.name")
+		.form-group 
 			div.col-md-6.mb-3
 				label Low Hours 
 				input.form-control(type="number", v-model="single_item.low_hours" required)
 			div.col-md-6.mb-3
 				label High Hours 
 				input.form-control(type="number", v-model="single_item.high_hours", required , v-on:keydown.tab="addItem()")
-		btn.btn.btn-primary(v-on:click="addItem()") Submit 
+		.form-group 
+			btn.btn.btn-primary(v-on:click="addItem()") Submit 
 		
-		div(v-if="results.length > 0")
+		div.quote-container(v-if="results.length > 0")
 			h3 Line Items 
-			div(v-for="(item, key) in results")
-				div(v-on:mouseover="mouseOver(item)", @mouseleave="mouseLeave(item)")
-					div Name: {{item.name}}
+			div.line-item(v-for="(item, key) in results", v-on:mouseover="mouseOver(item)", @mouseleave="mouseLeave(item)")
+					div Description: {{item.name}}
+					div Category: {{item.category}}
 					div Low Hours : {{item.low_hours}} High Hours : {{item.high_hours}}
 					div(v-if="item.active")
-						btn.btn.btn-primary(v-on:click="deleteItem(key)") Delete 
 						btn.btn.btn-primary(v-on:click="editItem(key)") Edit 
-			
+						btn.btn.btn-danger(v-on:click="deleteItem(key)") Delete 
+						
 			h3 Totals 
 			div Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }}
 			div Cost: ${{calculateCost}}
