@@ -18,8 +18,9 @@ block content
 		btn.btn.btn-primary(v-on:click="addItem()") Submit 
 		
 		div(v-for="item in results")
-			div Name: {{item.name}} 
-			div Low Hours : {{item.low_hours}} High Hours : {{item.high_hours}}
+			div(v-on:mouseover="mouseOver(item)")
+				div Name: {{item.name}} 
+				div Low Hours : {{item.low_hours}} High Hours : {{item.high_hours}}
 		div(v-if="results.length > 0")
 			h3 Totals 
 			div Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }}
