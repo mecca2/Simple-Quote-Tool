@@ -12,7 +12,10 @@ const vm = new Vue({
     total_low_hours: 0,
     total_high_hours: 0,
     error: false,
-    error_message: ''
+    error_message: '',
+    non_required_fields : [
+      'active'
+    ]
   },
   mounted() {
     this.item = Object.assign({}, this.single_item);
@@ -50,7 +53,7 @@ const vm = new Vue({
       this.error = false;
       var missing_fields = [];
       for (var key in this.single_item) {
-        if (this.single_item[key] == '' && key != "active" ) {
+        if (this.single_item[key] == '' && this.non_required_fields.indexOf(key) == -1  ) {
           this.error = true;
           missing_fields.push(key);
         }

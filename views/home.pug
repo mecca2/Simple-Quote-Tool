@@ -17,14 +17,16 @@ block content
 				input.form-control(type="number", v-model="single_item.high_hours", required , v-on:keydown.tab="addItem()")
 		btn.btn.btn-primary(v-on:click="addItem()") Submit 
 		
-		div(v-for="(item, key) in results")
-			div(v-on:mouseover="mouseOver(item)", @mouseleave="mouseLeave(item)")
-				div Name: {{item.name}}
-				div Low Hours : {{item.low_hours}} High Hours : {{item.high_hours}}
-				div(v-if="item.active")
-					btn.btn.btn-primary(v-on:click="deleteItem(key)") Delete 
-					btn.btn.btn-primary(v-on:click="editItem(key)") Edit 
 		div(v-if="results.length > 0")
+			h3 Line Items 
+			div(v-for="(item, key) in results")
+				div(v-on:mouseover="mouseOver(item)", @mouseleave="mouseLeave(item)")
+					div Name: {{item.name}}
+					div Low Hours : {{item.low_hours}} High Hours : {{item.high_hours}}
+					div(v-if="item.active")
+						btn.btn.btn-primary(v-on:click="deleteItem(key)") Delete 
+						btn.btn.btn-primary(v-on:click="editItem(key)") Edit 
+			
 			h3 Totals 
 			div Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }}
 			div Cost: ${{calculateCost}}
