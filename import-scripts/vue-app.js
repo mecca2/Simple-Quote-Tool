@@ -17,6 +17,9 @@ const vm = new Vue({
   },
   mounted() {
    this.item = Object.assign({}, this.single_item); 
+   if (localStorage.getItem('results')){
+    this.results = JSON.parse(localStorage.getItem('results'));
+   }
   }, 
   computed: {
     calculateLowHours: function(){
@@ -61,6 +64,14 @@ const vm = new Vue({
       this.single_item = Object.assign({}, this.item)
      }
       
+    }
+  }, 
+  watch: {
+    results: {
+      handler(){
+        localStorage.setItem('results', JSON.stringify(this.results));
+      },
+      deep: true,
     }
   }
 });
