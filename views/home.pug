@@ -14,7 +14,7 @@ block content
 				input.form-control(type="number", v-model="single_item.low_hours" required)
 			div.col-md-6.mb-3
 				label High Hours 
-				input.form-control(type="number", v-model="single_item.high_hours" required)
+				input.form-control(type="number", v-model="single_item.high_hours", required , v-on:keydown.tab="addItem()")
 		btn.btn.btn-primary(v-on:click="addItem()") Submit 
 		
 		div(v-for="item in results")
