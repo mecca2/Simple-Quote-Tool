@@ -49,7 +49,6 @@ const vm = new Vue({
     addItem: function() {
       this.error = false;
       var missing_fields = [];
-      console.log( this.single_item); 
       for (var key in this.single_item) {
         if (this.single_item[key] == '' && key != "active" ) {
           this.error = true;
@@ -65,12 +64,20 @@ const vm = new Vue({
 
     },
     mouseOver: function(item) {
-     // console.log(item); 
-      console.log('test');
-      item.active = true;  
-      console.log(item); 
+      item.active = true; 
+    }, 
+    mouseLeave: function(item) {
+      item.active = false; 
+    }, 
+    deleteItem: function(key){
+      this.results.splice(key,1); 
 
+    }, 
+    editItem: function(key){
+      this.single_item = this.results[key]; 
+      this.deleteItem(key); 
     }
+
   },
   watch: {
     results: {
