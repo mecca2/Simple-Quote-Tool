@@ -21,6 +21,6 @@ block content
 			div Name: {{item.name}} 
 			div Low Hours : {{item.low_hours}} High Hours : {{item.high_hours}}
 		div(v-if="results.length > 0")
-			h3 Results 
+			h3 Totals 
 			div Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }}
 			div Cost: ${{calculateCost}}
