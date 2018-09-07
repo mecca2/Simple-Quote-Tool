@@ -20,15 +20,25 @@ block content
 			div.col-md-6.mb-3
 				label High Hours 
 				input.form-control(type="number", v-model="single_item.high_hours", required , v-on:keydown.tab="addItem()")
+		.form-group
+			label Associated Monthly: 
+			div.form-check.form-check-inline
+				input.form-check-input(type="checkbox", v-model="single_item.has_monthly", true-value="1", false-value="0")
+				label.form-check-label Yes
+		.form-group(v-if="single_item.has_monthly == 1")
+			label Monthly:
+			input.form-control(type="number", v-model="single_item.monthly")
+			
 		.form-group 
 			btn.btn.btn-primary(v-on:click="addItem()") Submit 
 		
 		div.quote-container(v-if="results.length > 0")
 			h3 Line Items 
-			div.line-item(v-for="(item, key) in results", v-on:mouseover="mouseOver(item)", @mouseleave="mouseLeave(item)")
-					div Description: {{item.name}}
-					div Category: {{item.category}}
-					div Low Hours : {{item.low_hours}} High Hours : {{item.high_hours}}
+			div.card(v-for="(item, key) in results", v-on:mouseover="mouseOver(item)", @mouseleave="mouseLeave(item)")
+				div.card-body
+					h5.card-title Description: {{item.name}}
+					p.card-text Category: {{item.category}}
+					p.card-text Low Hours : {{item.low_hours}} High Hours : {{item.high_hours}}
 					div(v-if="item.active")
 						btn.btn.btn-primary(v-on:click="editItem(key)") Edit 
 						btn.btn.btn-danger(v-on:click="deleteItem(key)") Delete 

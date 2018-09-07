@@ -8,7 +8,9 @@ const vm = new Vue({
       low_hours: '',
       high_hours: '', 
       active: false, 
-      category: 'Development'
+      category: 'Development', 
+      has_monthly: 0 ,
+      monthly : ''
     },
     total_low_hours: 0,
     total_high_hours: 0,
