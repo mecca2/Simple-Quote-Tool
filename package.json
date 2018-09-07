@@ -12,6 +12,7 @@
     "connect-mongo": "^2.0.1",
     "express": "^4.13.4",
     "express-session": "^1.15.6",
+    "jspdf": "^1.4.1",
     "nodemailer": "^4.6.8",
     "pug": "^2.0.0-beta2"
   },

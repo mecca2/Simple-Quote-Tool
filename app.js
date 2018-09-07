@@ -22,6 +22,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // serve static files from /public
 app.use(express.static(__dirname + '/public'));
 
+app.use('/scripts', express.static(__dirname + '/node_modules/jspdf/dist/'));
+
 app.use(function(req, res,next){
   res.locals.projectName = projectName; 
   res.locals.projectAuthor = projectAuthor;

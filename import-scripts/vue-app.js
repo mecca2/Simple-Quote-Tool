@@ -1,3 +1,5 @@
+//import pdf from 'jspdf';
+
 const vm = new Vue({
   el: '.vue-app',
   data: {
@@ -17,7 +19,7 @@ const vm = new Vue({
     error: false,
     error_message: '',
     non_required_fields : [
-      'active'
+      'active', 'monthly', 'has_monthly'
     ], 
     categories: [
       'Development', 
@@ -109,6 +111,11 @@ const vm = new Vue({
     editItem: function(key){
       this.single_item = this.results[key]; 
       this.deleteItem(key); 
+    }, 
+    createPDF: function(){
+      var doc = new jsPDF()
+      doc.text('Hello world!', 10, 10)
+      doc.save('a4.pdf'); 
     }
 
   },

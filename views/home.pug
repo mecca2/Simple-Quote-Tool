@@ -51,3 +51,5 @@ block content
 			div Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }} 
 			
 			div Cost: {{calculateCost | toUSD}}
+			div
+				btn.btn.btn-primary(v-on:click="createPDF()") Create PDF  
