@@ -52,6 +52,27 @@ const vm = new Vue({
     },
     calculateCost: function() {
       return this.calculateMidHours * this.hourly_rate;
+    }, 
+    calculatedCategories : function(){
+      var tempArr = {}
+      this.results.forEach(function(element) {
+        if(typeof(tempArr[element.category]) == "undefined"){
+          tempArr[element.category] = {
+            low_hours: Number(element.low_hours),
+            high_hours: Number(element.high_hours)
+          } 
+        }else{
+          tempArr[element.category].low_hours += Number(element.low_hours);
+          tempArr[element.category].high_hours += Number(element.high_hours);
+        }
+      });
+      for (var key in tempArr){
+        tempArr[key].mid_hours = (tempArr[key].high_hours + tempArr[key].low_hours) / 2;
+        tempArr[key].precentage_of_total = tempArr[key].mid_hours / this.calculateMidHours; 
+      }
+      
+      
+      return tempArr
     }
 
   },
@@ -95,6 +116,14 @@ const vm = new Vue({
         localStorage.setItem('results', JSON.stringify(this.results));
       },
       deep: true,
+    }
+  }, 
+  filters: {
+    toPercent(value){
+      return (value * 100).toFixed(2) + '%';
+    },
+    toUSD(value){
+      return '$' + value.toLocaleString(undefined, {maximumFractionDigits:2, minimumFractionDigits: 2});
     }
   }
 });

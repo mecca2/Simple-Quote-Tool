@@ -34,5 +34,10 @@ block content
 						btn.btn.btn-danger(v-on:click="deleteItem(key)") Delete 
 						
 			h3 Totals 
-			div Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }}
-			div Cost: ${{calculateCost}}
+			div.calculated_categories
+				div(v-for="(item2, key2) in calculatedCategories")
+					div {{key2}}: 
+					div.hours Low Hours: {{item2.low_hours}}  Mid Hours: {{item2.mid_hours}} High Hours: {{item2.high_hours}} Pecentage of Total : {{item2.precentage_of_total | toPercent}}
+			div Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }} 
+			
+			div Cost: {{calculateCost | toUSD}}
