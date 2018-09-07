@@ -4,6 +4,7 @@ Simple quote tool using vue.js.
 # To Do 
 - Add field for discount on quote. 
 - Add option to export to PDF. 
+	- Installed plugin but need to setup for data in quote. Document on pdf js plugin :: https://parall.ax/products/jspdf 
 - Update styling of form / quote detail items. 
 - Save quote in local storage so you can go back to other quotes. 
 	- Possibly connect to Mongo DB. 
