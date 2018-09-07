@@ -48,14 +48,16 @@ block content
 			div.card
 				div.card-body
 					h5.card-title Overview
-					p.card-text Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }} 
+					p.card-text Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }}
+					p.card-text(v-if="calculateIfMonthlyApplies") Monthly Cost: {{calculateMonthlyCosts | toUSD}}
 					p.card-text Cost: {{calculateCost | toUSD}}
-					
+
 					h5.card-title Breakdown
 					div.calculated_categories.card-text
 						div(v-for="(item2, key2) in calculatedCategories")
 							div {{key2}}: 
 							div.hours Low Hours: {{item2.low_hours}}  Mid Hours: {{item2.mid_hours}} High Hours: {{item2.high_hours}} Pecentage of Total : {{item2.precentage_of_total | toPercent}}
+							div.hours(v-if="item2.monthly > 0") Monthly : {{item2.monthly | toUSD}}
 					
 			div
 				btn.btn.btn-primary(v-on:click="createPDF()") Create PDF  

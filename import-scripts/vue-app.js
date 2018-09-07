@@ -63,20 +63,43 @@ const vm = new Vue({
         if(typeof(tempArr[element.category]) == "undefined"){
           tempArr[element.category] = {
             low_hours: Number(element.low_hours),
-            high_hours: Number(element.high_hours)
+            high_hours: Number(element.high_hours),
+            monthly : Number(element.monthly)
           } 
         }else{
           tempArr[element.category].low_hours += Number(element.low_hours);
           tempArr[element.category].high_hours += Number(element.high_hours);
+          tempArr[element.category].monthly += Number(element.monthly);
         }
       });
       for (var key in tempArr){
         tempArr[key].mid_hours = (tempArr[key].high_hours + tempArr[key].low_hours) / 2;
         tempArr[key].precentage_of_total = tempArr[key].mid_hours / this.calculateMidHours; 
       }
-      
-      
       return tempArr
+    }, 
+    calculateIfMonthlyApplies: function(){
+      var temp = false; 
+      this.results.forEach(function(element) {
+        if(Number(element.has_monthly) == 1){
+          temp = true; 
+        }
+      });
+      if(temp){
+        return true;
+      }else{
+        return false; 
+      }
+      
+    },
+    calculateMonthlyCosts: function(){
+      var totalMonthly = 0 
+      this.results.forEach(function(element) {
+        if(element.has_monthly == 1){
+          totalMonthly += Number(element.monthly); 
+        }
+      });
+      return totalMonthly; 
     }
 
   },
@@ -93,8 +116,13 @@ const vm = new Vue({
       if (this.error) {
         this.error_message = 'The following fields are required: ' + missing_fields.toString();
       } else {
-        this.results.push(this.single_item);
-        this.single_item = Object.assign({}, this.item)
+        if(this.single_item.low_hours >= this.single_item.high_hours){
+          this.error = true;
+          this.error_message = 'Low hours must be lower than high hours.'; 
+        }else{
+          this.results.push(this.single_item);
+          this.single_item = Object.assign({}, this.item)
+        }
       }
 
     },
