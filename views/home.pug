@@ -39,17 +39,23 @@ block content
 					h5.card-title Description: {{item.name}}
 					p.card-text Category: {{item.category}}
 					p.card-text Low Hours : {{item.low_hours}} High Hours : {{item.high_hours}}
+					p.card-text(v-if="item.has_monthly == 1") Monthly: {{item.monthly | toUSD}}
 					div(v-if="item.active")
 						btn.btn.btn-primary(v-on:click="editItem(key)") Edit 
 						btn.btn.btn-danger(v-on:click="deleteItem(key)") Delete 
 						
 			h3 Totals 
-			div.calculated_categories
-				div(v-for="(item2, key2) in calculatedCategories")
-					div {{key2}}: 
-					div.hours Low Hours: {{item2.low_hours}}  Mid Hours: {{item2.mid_hours}} High Hours: {{item2.high_hours}} Pecentage of Total : {{item2.precentage_of_total | toPercent}}
-			div Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }} 
-			
-			div Cost: {{calculateCost | toUSD}}
+			div.card
+				div.card-body
+					h5.card-title Overview
+					p.card-text Low Hours: {{ calculateLowHours }} Mid Hours: {{ calculateMidHours }} High Hours: {{ calculateHighHours }} 
+					p.card-text Cost: {{calculateCost | toUSD}}
+					
+					h5.card-title Breakdown
+					div.calculated_categories.card-text
+						div(v-for="(item2, key2) in calculatedCategories")
+							div {{key2}}: 
+							div.hours Low Hours: {{item2.low_hours}}  Mid Hours: {{item2.mid_hours}} High Hours: {{item2.high_hours}} Pecentage of Total : {{item2.precentage_of_total | toPercent}}
+					
 			div
 				btn.btn.btn-primary(v-on:click="createPDF()") Create PDF  
