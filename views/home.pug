@@ -5,19 +5,21 @@ block content
 		div.alert.alert-danger(v-if="error") {{error_message}} 
 		.form-group 
 			label Hourly Rate? 
-			input.form-control(type="number", v-model="hourly_rate")
+			input.form-control(type="number", v-model="hourly_rate ")
 		.form-group 
-			label Category:
-			select.form-control(type="text", v-model="single_item.category")
-				option(v-for="category in categories") {{category}}
+			
 		.form-group 
 			label Description:
 			input.form-control(type="text", v-model="single_item.name")
 		.form-group 
-			div.col-md-6.mb-3
+			div.col-md-4.mb-3
+				label Category:
+				select.form-control(type="text", v-model="single_item.category")
+					option(v-for="category in categories") {{category}}
+			div.col-md-4.mb-3
 				label Low Hours 
 				input.form-control(type="number", v-model="single_item.low_hours" required)
-			div.col-md-6.mb-3
+			div.col-md-4.mb-3
 				label High Hours 
 				input.form-control(type="number", v-model="single_item.high_hours", required , v-on:keydown.tab="addItem()")
 		.form-group
