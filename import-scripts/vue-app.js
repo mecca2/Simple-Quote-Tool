@@ -5,6 +5,7 @@ const vm = new Vue({
   data: {
     results: [],
     hourly_rate: 50,
+    standard_item: 0, 
     single_item: {
       name: '',
       low_hours: '',
