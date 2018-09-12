@@ -1,14 +1,6 @@
 # Simple Quote Tool 
 Simple quote tool using vue.js. 
 
-# To Do 
-- Add field for discount on quote. 
-- Add option to export to PDF. 
-	- Installed plugin but need to setup for data in quote. Document on pdf js plugin :: https://parall.ax/products/jspdf 
-	- Example exporting all html to pdf :: https://stackoverflow.com/questions/23035858/export-html-table-to-pdf-using-jspdf 
-- Update styling of form / quote detail items. 
-- Save quote in local storage so you can go back to other quotes. 
-	- Possibly connect to Mongo DB. 
 
 # Usage
 - The easiest way to start is to clone the repository. 
@@ -31,3 +23,17 @@ nodemon
 # Site will then run on port 3000. Site can be accessed from the following url. 
 http://localhost:3000/ 
 ``` 
+
+
+# Screenshot 
+
+![Screenshot](screenshot.png) 
+
+# To Do 
+- Add field for discount on quote. 
+- Add option to export to PDF. 
+	- Installed plugin but need to setup for data in quote. Document on pdf js plugin :: https://parall.ax/products/jspdf 
+	- Example exporting all html to pdf :: https://stackoverflow.com/questions/23035858/export-html-table-to-pdf-using-jspdf 
+- Update styling of form / quote detail items. 
+- Save quote in local storage so you can go back to other quotes. 
+	- Possibly connect to Mongo DB. 
