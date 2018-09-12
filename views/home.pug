@@ -3,31 +3,53 @@ extends layout
 block content
 	div.col-12
 		div.alert.alert-danger(v-if="error") {{error_message}} 
-		.form-group 
-			label Hourly Rate? 
-			input.form-control(type="number", v-model="hourly_rate ")
-		.form-group 
-			label Description:
-			input.form-control(type="text", v-model="single_item.name")
-		.form-group 
-			div.col-md-4.mb-3
-				label Category:
-				select.form-control(type="text", v-model="single_item.category")
-					option(v-for="category in categories") {{category}}
-			div.col-md-4.mb-3
-				label Low Hours 
-				input.form-control(type="number", v-model="single_item.low_hours" required)
-			div.col-md-4.mb-3
-				label High Hours 
-				input.form-control(type="number", v-model="single_item.high_hours", required , v-on:keydown.tab="addItem()")
-		.form-group
-			label Associated Monthly: 
-			div.form-check.form-check-inline
-				input.form-check-input(type="checkbox", v-model="single_item.has_monthly", true-value="1", false-value="0")
-				label.form-check-label Yes
-		.form-group(v-if="single_item.has_monthly == 1")
-			label Monthly:
-			input.form-control(type="number", v-model="single_item.monthly")
+		div.card
+				div.card-body
+					h5.card-title Customer Information: 
+					.form-group 
+						label Company Name: 
+						input.form-control(type="number", v-model="customer.company")
+					.form-group 
+						div.col-md-4.mb-3
+							label First Name 
+							input.form-control(type="number", v-model="customer.first_name" )
+						div.col-md-4.mb-3
+							label Last Name
+							input.form-control(type="number", v-model="customer.last_name")
+						div.col-md-4.mb-3
+							label Email
+							input.form-control(type="number", v-model="customer.email")
+		div.card
+				div.card-body
+					h5.card-title Global Information: 
+					.form-group 
+						label Hourly Rate? 
+						input.form-control(type="number", v-model="hourly_rate ")
+		div.card
+				div.card-body
+					h5.card-title Quote Item: 
+					.form-group 
+						label Description:
+						input.form-control(type="text", v-model="single_item.name")
+					.form-group 
+						div.col-md-4.mb-3
+							label Category:
+							select.form-control(type="text", v-model="single_item.category")
+								option(v-for="category in categories") {{category}}
+						div.col-md-4.mb-3
+							label Low Hours 
+							input.form-control(type="number", v-model="single_item.low_hours" required)
+						div.col-md-4.mb-3
+							label High Hours 
+							input.form-control(type="number", v-model="single_item.high_hours", required , v-on:keydown.tab="addItem()")
+					.form-group
+						label Associated Monthly: 
+						div.form-check.form-check-inline
+							input.form-check-input(type="checkbox", v-model="single_item.has_monthly", true-value="1", false-value="0")
+							label.form-check-label Yes
+					.form-group(v-if="single_item.has_monthly == 1")
+						label Monthly:
+						input.form-control(type="number", v-model="single_item.monthly")
 			
 		.form-group 
 			btn.btn.btn-primary(v-on:click="addItem()") Submit 

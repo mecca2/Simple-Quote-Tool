@@ -15,6 +15,12 @@ const vm = new Vue({
       has_monthly: 0 ,
       monthly : ''
     },
+    customer:{
+      company: '',
+      first_name: '', 
+      last_name: '', 
+      email: ''
+    },
     total_low_hours: 0,
     total_high_hours: 0,
     error: false,
